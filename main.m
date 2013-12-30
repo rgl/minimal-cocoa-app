@@ -10,8 +10,11 @@ int main(void) {
     //    activation policy is changed.
     // See https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSRunningApplication_Class/Reference/Reference.html#//apple_ref/doc/c_ref/NSApplicationActivationPolicy
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
- 
-    [NSApp activateIgnoringOtherApps:YES];
+
+    // NB this is needed to activate the application when we launch it from Terminal. 
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [NSApp activateIgnoringOtherApps:YES];
+    });
 
     id appName = [[NSProcessInfo processInfo] processName];
     id quitMenuItemTitle = [@"Quit " stringByAppendingString:appName];
