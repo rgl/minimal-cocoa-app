@@ -17,4 +17,4 @@ If you try to directly execute the application binary with Finder, you'll see it
 
 
 [0]:http://www.cocoawithlove.com/2010/09/minimalist-cocoa-programming.html
-[1]:https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/undles/BundleTypes/BundleTypes.html
+[1]:https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html
