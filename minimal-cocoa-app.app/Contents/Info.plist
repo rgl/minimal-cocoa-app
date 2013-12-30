@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>minimal-cocoa-app</string>
+
+	<key>CFBundleIconFile</key>
+	<string>app</string>
+
+	<key>CFBundleIdentifier</key>
+	<string>com.example.minimal-cocoa-app</string>
+
+	<!--
+		this is displayed by Finder when you right click the .app
+		and choose Quick Look.
+
+		this is also the text for the first item in the menubar.
+	-->
+	<key>CFBundleName</key>
+	<string>Minimal Cocoa Application</string>
+
+	<!--
+		this is displayed by Finder when you right click the .app
+		and choose Quick Look.
+	-->
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+
+	<!--
+		this is displayed by Finder when you right click the .app
+		and choose Get Info.
+	-->
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+
+	<!--
+		this is displayed by Finder when you right click the .app
+		and choose Get Info or Quick Look.
+	-->
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2013 ruilopes.com. All rights reserved.</string>
+</dict>
+</plist>

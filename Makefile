@@ -1,18 +1,25 @@
-APP_NAME := minimal-cocoa-app
-APP_DIR := $(APP_NAME).app/Contents/MacOS
-APP := $(APP_DIR)/$(APP_NAME)
+APP_NAME	:= minimal-cocoa-app
+APP_BUNDLE	:= $(APP_NAME).app
+APP			:= $(APP_BUNDLE)/Contents/MacOS/$(APP_NAME)
+APP_ICNS	:= $(APP_BUNDLE)/Contents/Resources/app.icns
 
 .PHONY: run build clean
 
-run: $(APP)
-	open $(APP_NAME).app
+run: build
+	open $(APP_BUNDLE)
 
-build: $(APP)
+build: $(APP) $(APP_ICNS)
 	@echo 'Done!'
 
 clean:
-	rm -f $(APP)
+	rm -f $(APP) $(APP_ICNS)
 
 $(APP): main.m
-	@mkdir -p $(APP_DIR)
-	clang -Wall -framework Cocoa -o $(APP) main.m
+	@mkdir -p $(shell dirname APP)
+	clang -Wall -framework Cocoa -o $(APP) $<
+
+$(APP_ICNS): app.iconset/*
+	@mkdir -p $(shell dirname APP_ICNS)
+	iconutil -c icns -o $(APP_ICNS) app.iconset
+	@echo NB you can safely ignore the above warnings
+	touch $(APP_BUNDLE) # force Finder to update its cache
