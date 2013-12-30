@@ -16,7 +16,10 @@ int main(void) {
         [NSApp activateIgnoringOtherApps:YES];
     });
 
-    id appName = [[NSProcessInfo processInfo] processName];
+    id bundleInfo = [[NSBundle mainBundle] infoDictionary];
+    id appName = [bundleInfo objectForKey:@"CFBundleName"];
+    id appVersion = [bundleInfo objectForKey:@"CFBundleVersion"];
+
     id quitMenuItemTitle = [@"Quit " stringByAppendingString:appName];
     id quitMenuItem = [[NSMenuItem alloc] autorelease];
     [quitMenuItem
@@ -39,12 +42,12 @@ int main(void) {
 
     id window = [[NSWindow alloc] autorelease];
     [window
-        initWithContentRect:NSMakeRect(0, 0, 200, 200)
+        initWithContentRect:NSMakeRect(0, 0, 320, 240)
         styleMask:NSTitledWindowMask
         backing:NSBackingStoreBuffered
         defer:NO];
-    [window cascadeTopLeftFromPoint:NSMakePoint(20, 20)];
-    [window setTitle:appName];
+    [window setTitle:[[appName stringByAppendingString:@" v"] stringByAppendingString:appVersion]];
+    [window center];
     [window makeKeyAndOrderFront:nil];
 
     // NB run never returns.
