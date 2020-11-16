@@ -15,11 +15,11 @@ clean:
 	rm -f $(APP) $(APP_ICNS)
 
 $(APP): main.m
-	mkdir -p $(shell dirname $(APP))
-	clang -Wall -framework Cocoa -o $(APP) $<
+	mkdir -p $(shell dirname $@)
+	clang -Wall -framework Cocoa -o $@ $<
 
 $(APP_ICNS): app.iconset/*
-	mkdir -p $(shell dirname $(APP_ICNS))
-	iconutil -c icns -o $(APP_ICNS) app.iconset
+	mkdir -p $(shell dirname $@)
+	iconutil -c icns -o $@ app.iconset
 	@echo NB you can safely ignore the above app.iconset warnings
 	touch $(APP_BUNDLE) # force Finder to update its cache
